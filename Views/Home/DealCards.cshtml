@@ -1,0 +1,30 @@
+﻿@model DeckResponse
+@{
+    ViewData["Title"] = "DealCards";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Jeremy's Card Dealer</h1>
+</div>
+
+<div class="text-center">
+    <p>Deck ID: @Model.deck_id</p>
+    <p>Cards remaining: @Model.remaining</p>
+    <a href="/Home/DealCards?deck_id=@Model.deck_id" class="btn btn-primary">Draw again</a>
+</div>
+
+<br />
+
+@if (Model.remaining == 0)
+{
+    <div class="text-center">
+        <a href="/Home/DealCards" class="btn btn-primary">Shuffle & deal</a>
+    </div>
+}
+
+<br />
+
+@foreach (Card card in Model.cards)
+{
+    <img src="@card.image" />
+}
